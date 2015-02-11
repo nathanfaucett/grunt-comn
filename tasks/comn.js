@@ -1,12 +1,17 @@
 module.exports = function(grunt) {
     var comn = require("comn"),
+        filePath = require("file_path"),
         fileUtils = require("file_utils");
 
     grunt.registerMultiTask("comn", "Compiles CommonJS modules into one file", function() {
         var options = this.options(),
             index = options.index || options.main || options.file,
-            out = options.out;
+            files = comn(index, options),
+            out = options.out,
+            path;
 
-        fileUtils.writeFileSync(out, comn(index, options));
+        for (path in files) {
+            fileUtils.writeFileSync(filePath.join(out, path), files[path]);
+        }
     });
 };
