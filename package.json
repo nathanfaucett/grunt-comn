@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "comn": "nathanfaucett/comn",
-    "file_path": "nathanfaucett/file_path",
     "file_utils": "nathanfaucett/file_utils"
   }
 }
